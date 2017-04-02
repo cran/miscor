@@ -25,8 +25,8 @@
 #' @param x              initial data, i.e., product-moment correlation coefficient in a sub-sample of k observations.
 #' @param k              number of observations in each sub-sample.
 #' @param rho            a number indicating the correlation under the null hypothesis, \eqn{\rho}0.
-#' @param delta          minimum difference to be detected, \eqn{\delta}.
 #' @param alternative    a character string specifying the alternative hypothesis,
+#' @param delta          minimum difference to be detected, \eqn{\delta}.
 #' @param alpha          type-I-risk, \eqn{\alpha}.
 #' @param beta           type-II-risk, \eqn{\beta}.
 #' @param output         logical: if \code{TRUE}, output is shown.
@@ -73,14 +73,14 @@
 #' # H0: rho <= 0.3, H1: rho > 0.3
 #' # alpha = 0.05, beta = 0.2, delta = 0.2
 #'
-#' seq.obj <- seqtest.cor(0.46, k = 14, rho = 0.3, delta = 0.2,
-#'                        alternative = "greater",
+#' seq.obj <- seqtest.cor(0.46, k = 14, rho = 0.3,
+#'                        alternative = "greater", delta = 0.2,
 #'                        alpha = 0.05, beta = 0.2, plot = TRUE)
 #'
 #' seq.obj <- update(seq.obj, c(0.56, 0.76, 0.66))
-seqtest.cor <- function(x, k, rho, delta,
+seqtest.cor <- function(x, k, rho,
                         alternative = c("two.sided", "less", "greater"),
-                        alpha = 0.05, beta = 0.1,
+                        delta, alpha = 0.05, beta = 0.1,
                         output = TRUE, plot = FALSE) {
 
   #-----------------------------------------------------------------------------------

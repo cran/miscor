@@ -1,12 +1,10 @@
 ##########################################################################################################
 #
-# SSRA: Sakai Squential Relation Analysis
+# miscor: Miscellaneous Functions for the Correlation Coefficient
 #
 # Internal function: internal.sizeplot
 #
 # Takuya Yanagida <akuya.yanagida@univie.ac.at>
-# Keiko Sakai <keiko.sakai@oit.ac.jp>
-#
 internal.sizeplot <- function(x, y, scale = 1, pow = 0.5, powscale = TRUE,
                       size = c(1, 4), ...) {
 

@@ -4,9 +4,9 @@
 \alias{test.cor}
 \title{Test for the product-moment correlation coefficient for H0: \eqn{\rho = \rho}0}
 \usage{
-test.cor(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0,
-  alternative = c("two.sided", "less", "greater"), reduced = FALSE,
-  conf.level = 0.95, digits = 3, output = TRUE)
+test.cor(x = NULL, y = NULL, r = NULL, n = NULL, rho0 = 0,
+         alternative = c("two.sided", "less", "greater"), reduced = FALSE,
+         conf.level = 0.95, digits = 3, output = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector.}
@@ -17,7 +17,7 @@ test.cor(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0,
 
 \item{n}{alternative specification, number of observations.}
 
-\item{rho}{a number indicating \eqn{\rho}0, the value under the null hypothesis.}
+\item{rho0}{a number indicating \eqn{\rho}0, the value under the null hypothesis.}
 
 \item{alternative}{a character string describing the alternative hypothesis,
 must be one of \code{"two.sided"} (default), \code{"greater"} or \code{"less"}.}
@@ -72,7 +72,7 @@ test.cor(r = 0.23, n = 120)
 # H0: rho == 0.4, H1: rho != 0.4
 # r = 0.55, n = 120
 
-test.cor(r = 0.55, n = 120, rho = 0.4)
+test.cor(r = 0.55, n = 120, rho0 = 0.4)
 
 #--------------------------------------
 # One-sided test
@@ -81,10 +81,7 @@ test.cor(r = 0.55, n = 120, rho = 0.4)
 # Generate random data
 dat <- sim.cor(100, rho = 0.4)
 
-test.cor(dat$x, dat$y, rho = 0.4)
-}
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+test.cor(dat$x, dat$y, rho0 = 0.4)
 }
 \references{
 Cramer, H. (1946). \emph{Mathematical methods of statistics}. Princeton: Princeton Press.
@@ -98,4 +95,6 @@ Using H0: 0 \eqn{< \rho \le \lambda} is preferable to H0: \eqn{\rho = }0. \emph{
 \seealso{
 \code{\link{size.cor}}, \code{\link{comptest.cor}}, \code{\link{seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

@@ -5,7 +5,7 @@
 \title{Plot sim.seqtest}
 \usage{
 \method{plot}{sim.seqtest.cor}(x, plot.lines = TRUE, plot.nom = TRUE,
-  ylim = NULL, type = "b", pch = 19, lty = 1, lwd = 1, ...)
+                               ylim = NULL, type = "b", pch = 19, lty = 1, lwd = 1, ...)
 }
 \arguments{
 \item{x}{\code{sim.seqtest.cor} object.}
@@ -58,9 +58,6 @@ sim.obj.2 <- sim.seqtest.cor(rho.sim = 0.55, k = 16, rho = 0.3,
 plot(sim.obj.2)
 }
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
-}
 \references{
 Schneider, B., Rasch, D., Kubinger, K. D., & Yanagida, T. (2015).
 A Sequential triangular test of a correlation coefficient's null-hypothesis: 0 \eqn{< \rho \le \rho}0.
@@ -69,4 +66,6 @@ A Sequential triangular test of a correlation coefficient's null-hypothesis: 0 \
 \seealso{
 \code{\link{sim.seqtest.cor}}, \code{\link{seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

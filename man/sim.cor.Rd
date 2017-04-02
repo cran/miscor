@@ -5,7 +5,7 @@
 \title{Simulate bivariate distribution with a specified correlation}
 \usage{
 sim.cor(n, rho, mean = c(0, 0), sd = c(1, 1),
-  skewness = c(0, 0), kurtosis = c(0, 0))
+        skewness = c(0, 0), kurtosis = c(0, 0))
 }
 \arguments{
 \item{n}{number of observations.}
@@ -26,7 +26,8 @@ Returns a data.frame with variables \code{x} and \code{y}.
 \description{
 This function simulates bivariate distribution with correaltion equal to \code{rho}, mean equal to \code{mean},
 standard deviation equal to \code{sd}, skewness equal to \code{skewness}, and kurtosis equal to \code{kurtosis}
-by Fleishman polynomials.
+by Fleishman polynomials. Note that that the specified skewness and kurtosis parameters have to be in line with
+\eqn{kurtosis} >= (\eqn{skewnewss}^2 - 2)
 }
 \examples{
 #------------------------------------------------
@@ -43,9 +44,6 @@ sim.cor(200, rho = 0.3)
 
 sim.cor(500, rho = 0.4, skewness = c(0, 1.5), kurtosis = c(2, 7))
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -53,4 +51,6 @@ New York: John Wiley & Sons.
 \seealso{
 \code{\link{test.cor}}, \code{\link{seqtest.cor}}, \code{\link{comptest.cor}},
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

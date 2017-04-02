@@ -4,8 +4,10 @@
 \alias{seqtest.cor}
 \title{Sequential triangular test for the product-moment correlation coefficient}
 \usage{
-seqtest.cor(x, k, rho, delta, alternative = c("two.sided", "less", "greater"),
-  alpha = 0.05, beta = 0.1, output = TRUE, plot = FALSE)
+seqtest.cor(x, k, rho,
+            alternative = c("two.sided", "less", "greater"),
+            delta, alpha = 0.05, beta = 0.1,
+            output = TRUE, plot = FALSE)
 }
 \arguments{
 \item{x}{initial data, i.e., product-moment correlation coefficient in a sub-sample of k observations.}
@@ -14,9 +16,9 @@ seqtest.cor(x, k, rho, delta, alternative = c("two.sided", "less", "greater"),
 
 \item{rho}{a number indicating the correlation under the null hypothesis, \eqn{\rho}0.}
 
-\item{delta}{minimum difference to be detected, \eqn{\delta}.}
-
 \item{alternative}{a character string specifying the alternative hypothesis,}
+
+\item{delta}{minimum difference to be detected, \eqn{\delta}.}
 
 \item{alpha}{type-I-risk, \eqn{\alpha}.}
 
@@ -77,14 +79,11 @@ seq.obj <- update(seq.obj, c(0.56, 0.76, 0.56, 0.52))
 # H0: rho <= 0.3, H1: rho > 0.3
 # alpha = 0.05, beta = 0.2, delta = 0.2
 
-seq.obj <- seqtest.cor(0.46, k = 14, rho = 0.3, delta = 0.2,
-                       alternative = "greater",
+seq.obj <- seqtest.cor(0.46, k = 14, rho = 0.3,
+                       alternative = "greater", delta = 0.2,
                        alpha = 0.05, beta = 0.2, plot = TRUE)
 
 seq.obj <- update(seq.obj, c(0.56, 0.76, 0.66))
-}
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
 }
 \references{
 Schneider, B., Rasch, D., Kubinger, K. D., & Yanagida, T. (2015).
@@ -94,4 +93,6 @@ A Sequential triangular test of a correlation coefficient's null-hypothesis: 0 \
 \seealso{
 \code{\link{update.seqtest}}, \code{\link{sim.seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

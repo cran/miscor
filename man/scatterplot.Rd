@@ -5,7 +5,7 @@
 \title{Scatterplot Matrices}
 \usage{
 scatterplot(dat, type = c("jitter", "size", "count", "sun", "identity"),
-  barplot = TRUE, curves = TRUE)
+            barplot = TRUE, curves = TRUE)
 }
 \arguments{
 \item{dat}{a dat frame}
@@ -34,9 +34,6 @@ scatterplot(dat, type = "count")
 # Scatterplot matrix: sun
 scatterplot(dat, type = "sun")
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -44,4 +41,6 @@ New York: John Wiley & Sons.
 \seealso{
 \code{\link{test.cor}}, \code{\link{seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

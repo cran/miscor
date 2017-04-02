@@ -5,7 +5,6 @@
 # Internal function: print.seqtest.cor
 #
 # Author: Takuya Yanagida <takuya.yanagida@univie.ac.at>
-#
 internal.print.seqtest.cor <- function(x, print.step = 1, print.max = 1, ...) {
 
   #-----------------------------------------------------------------------------------

@@ -4,10 +4,11 @@
 \alias{sim.seqtest.cor}
 \title{Simulation of the sequential triangular test for the product-moment correlation coefficient}
 \usage{
-sim.seqtest.cor(rho.sim, k, rho, delta,
-   alternative = c("two.sided", "less", "greater"), alpha = 0.05, beta = 0.1,
-   runs = 1000, m.x = 0, sd.x = 1, m.y = 0, sd.y = 1, digits = 3,
-   output = TRUE, plot = FALSE)
+sim.seqtest.cor(rho.sim, k, rho,
+                alternative = c("two.sided", "less", "greater"),
+                delta, alpha = 0.05, beta = 0.1, runs = 1000,
+                m.x = 0,  sd.x = 1, m.y = 0, sd.y = 1,
+                digits = 3, output = TRUE, plot = FALSE)
 }
 \arguments{
 \item{rho.sim}{simulated population correlation coefficient, \eqn{\rho}.}
@@ -16,9 +17,9 @@ sim.seqtest.cor(rho.sim, k, rho, delta,
 
 \item{rho}{a number indicating the correlation under the null hypothesis, \eqn{\rho}0.}
 
-\item{delta}{minimum difference to be detected, \eqn{\delta}.}
-
 \item{alternative}{a character string specifying the alternative hypothesis,}
+
+\item{delta}{minimum difference to be detected, \eqn{\delta}.}
 
 \item{alpha}{type-I-risk, \eqn{\alpha}.}
 
@@ -81,22 +82,19 @@ for the null hypothesis, H0: \eqn{\rho} <= \eqn{\rho}.0 with the alternative hyp
 
 # Step 1: Determine the optimal size of subsamples (k)
 
-sim.seqtest.cor(rho.sim = 0.3, k = seq(4, 16, by = 1), rho = 0.3, delta = 0.25,
+sim.seqtest.cor(rho.sim = 0.3, k = seq(4, 16, by = 1), rho = 0.3,
                 alternative = "greater",
-                alpha = 0.05, beta = 0.05,
+                delta = 0.25, alpha = 0.05, beta = 0.05,
                 runs = 10000, plot = TRUE)
 
 # Step 2: Determine the optimal nominal type-II-risk based on
 #         the optimal size of subsamples (k) from step 1
 
-sim.seqtest.cor(rho.sim = 0.55, k = 16, rho = 0.3, delta = 0.25,
+sim.seqtest.cor(rho.sim = 0.55, k = 16, rho = 0.3,
                 alternative = "greater",
-                alpha = 0.05, beta = seq(0.05, 0.15, by = 0.01),
+                delta = 0.25, alpha = 0.05, beta = seq(0.05, 0.15, by = 0.01),
                 runs = 10000, plot = TRUE)
 }
-}
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
 }
 \references{
 Schneider, B., Rasch, D., Kubinger, K. D., & Yanagida, T. (2015).
@@ -106,4 +104,6 @@ A Sequential triangular test of a correlation coefficient's null-hypothesis: 0 \
 \seealso{
 \code{\link{seqtest.cor}}, \code{\link{plot.sim.seqtest.cor}}, \code{\link{print.sim.seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

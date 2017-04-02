@@ -19,7 +19,7 @@
 #' @param y           a numeric vector.
 #' @param r           alternative specification, product-moment correlation coefficient.
 #' @param n           alternative specification, number of observations.
-#' @param rho        a number indicating \eqn{\rho}0, the value under the null hypothesis.
+#' @param rho0        a number indicating \eqn{\rho}0, the value under the null hypothesis.
 #' @param alternative a character string describing the alternative hypothesis,
 #'                    must be one of \code{"two.sided"} (default), \code{"greater"} or \code{"less"}.
 #' @param reduced     logical: if \code{TRUE}, compuatation is based on the reduced formula.
@@ -69,7 +69,7 @@
 #' # H0: rho == 0.4, H1: rho != 0.4
 #' # r = 0.55, n = 120
 #'
-#' test.cor(r = 0.55, n = 120, rho = 0.4)
+#' test.cor(r = 0.55, n = 120, rho0 = 0.4)
 #'
 #' #--------------------------------------
 #' # One-sided test
@@ -78,8 +78,8 @@
 #' # Generate random data
 #' dat <- sim.cor(100, rho = 0.4)
 #'
-#' test.cor(dat$x, dat$y, rho = 0.4)
-test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternative = c("two.sided", "less", "greater"),
+#' test.cor(dat$x, dat$y, rho0 = 0.4)
+test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho0 = 0, alternative = c("two.sided", "less", "greater"),
                      reduced = FALSE, conf.level = 0.95, digits = 3, output = TRUE) {
 
   #-----------------------------------------------------------------------------------
@@ -105,9 +105,9 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
 
   ###
 
-  if (rho >= 1 | rho <= -1) {
+  if (rho0 >= 1 | rho0 <= -1) {
 
-    stop("Specified value under the null hypothesis rho out of bounds")
+    stop("Specified value under the null hypothesis rho0 out of bounds")
 
   }
 
@@ -133,7 +133,7 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
 
   #...............
   # t-Test
-  if (rho == 0) {
+  if (rho0 == 0) {
 
     statistic <- r * sqrt(n - 2) / sqrt(1 - r^2)
 
@@ -144,9 +144,9 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
   } else {
 
     z.r <- 0.5 * log((1 + r) / (1 - r))
-    z.rho <- 0.5 * log((1 + rho) / (1 - rho)) + if (reduced == FALSE) { rho / (2 * (n - 1)) } else { 0 }
+    z.rho0 <- 0.5 * log((1 + rho0) / (1 - rho0)) + if (reduced == FALSE) { rho0 / (2 * (n - 1)) } else { 0 }
 
-    statistic <- (z.r - z.rho) * sqrt(n - 3)
+    statistic <- (z.r - z.rho0) * sqrt(n - 3)
 
   }
 
@@ -156,7 +156,7 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
 
   if (alternative == "two.sided") {
 
-    pval <- if (rho == 0) { pt(abs(statistic), df = df, lower.tail = FALSE)*2 } else { pnorm(abs(statistic), lower.tail = FALSE)*2 }
+    pval <- if (rho0 == 0) { pt(abs(statistic), df = df, lower.tail = FALSE)*2 } else { pnorm(abs(statistic), lower.tail = FALSE)*2 }
 
     res.conf <- conf.cor(r = r, n = n, alternative = "two.sided", conf.level = conf.level, output = FALSE)$res
 
@@ -164,7 +164,7 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
 
   if (alternative == "greater") {
 
-    pval <- if (rho == 0) { ifelse(statistic < 0, 1, pt(statistic, df = df, lower.tail = FALSE)) } else { ifelse(statistic < 0, 1, pnorm(statistic, lower.tail = FALSE)) }
+    pval <- if (rho0 == 0) { ifelse(statistic < 0, 1, pt(statistic, df = df, lower.tail = FALSE)) } else { ifelse(statistic < 0, 1, pnorm(statistic, lower.tail = FALSE)) }
 
     res.conf <- conf.cor(r = r, n = n, alternative = "less", conf.level = conf.level, output = FALSE)$res
 
@@ -172,7 +172,7 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
 
   if (alternative == "less") {
 
-    pval <- if (rho == 0) { ifelse(statistic > 0, 1, pt(statistic, df = df)) } else { ifelse(statistic > 0, 1, pnorm(statistic)) }
+    pval <- if (rho0 == 0) { ifelse(statistic > 0, 1, pt(statistic, df = df)) } else { ifelse(statistic > 0, 1, pnorm(statistic)) }
 
     res.conf <- conf.cor(r = r, n = n, alternative = "greater", conf.level = conf.level, output = FALSE)$res
 
@@ -181,11 +181,11 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
   #-----------------------------------------------------------------------------------
   # Return object
 
-  if (rho == 0) {
+  if (rho0 == 0) {
 
     object <- list(call = match.call(),
                    dat = data.frame(x, y),
-                   spec = list(rho = rho, alternative = alternative, reduced = reduced,
+                   spec = list(rho0 = rho0, alternative = alternative, reduced = reduced,
                                conf.level = conf.level, digits = digits),
                    res = list(t = statistic, df = df, pval = pval, r = r, n = n,
                               lower = res.conf$lower, upper = res.conf$upper))
@@ -194,7 +194,7 @@ test.cor <- function(x = NULL, y = NULL, r = NULL, n = NULL, rho = 0, alternativ
 
     object <- list(call = match.call(),
                    dat = data.frame(x, y),
-                   spec = list(rho = rho, alternative = alternative, reduced = reduced,
+                   spec = list(rho0 = rho0, alternative = alternative, reduced = reduced,
                                conf.level = conf.level, digits = digits),
                    res = list(z = statistic, pval = pval, r = r, n = n,
                               lower = res.conf$lower, upper = res.conf$upper))

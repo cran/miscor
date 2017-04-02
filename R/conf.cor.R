@@ -35,7 +35,7 @@
 #'   \code{dat}       \tab data.frame with x and y (if available) \cr
 #'   \code{spec}      \tab specification of function arguments \cr
 #'   \code{res}       \tab list with results, i.e., r (correlation coefficient),
-#'                         n (sample size), lower (lower limit of CI), upper (upper limit of CI) \cr
+#'                         n, lower (lower limit of CI), upper (upper limit of CI) \cr
 #' }
 #'
 #' @export

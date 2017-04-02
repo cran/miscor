@@ -5,7 +5,7 @@
 \title{Update seqtest}
 \usage{
 \method{update}{seqtest}(object, x = NULL, y = NULL, initial = FALSE,
-  output = TRUE, plot = TRUE, ...)
+                         output = TRUE, plot = TRUE, ...)
 }
 \arguments{
 \item{object}{\code{cor.seqtest} object.}
@@ -34,9 +34,6 @@ seq.obj <- seqtest.cor(0.46, k = 14, rho = 0.3, delta = 0.2,
 
 seq.obj <- update(seq.obj, c(0.56, 0.76, 0.56, 0.52))
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
-}
 \references{
 Rasch, D., Pilz, J., Verdooren, L. R., & Gebhardt, G. (2011).
 \emph{Optimal experimental design with R}. Boca Raton: Chapman & Hall/CRC.
@@ -51,4 +48,6 @@ A Sequential triangular test of a correlation coefficient's null-hypothesis: 0 \
 \seealso{
 \code{\link{seqtest.cor}},
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

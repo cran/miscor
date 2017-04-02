@@ -57,7 +57,7 @@
 #' # H0: rho.p <= 0.2, H1: rho.p > 0.2
 #'
 #' obj <- par.cor(dat$x, dat$y, p.xy = dat$z, sig = TRUE,
-#'                rho = 0.4, alternative = "less", output = FALSE)
+#'                rho0 = 0.4, alternative = "less", output = FALSE)
 #' print(obj)
 print.par.cor <- function(x, ...) {
 
@@ -73,25 +73,25 @@ print.par.cor <- function(x, ...) {
 
     if (x$spec$alternative == "two.sided") {
 
-      cat("  H0: rho.p ==", x$spec$rho, " versus  H1: rho.p !=", x$spec$rho, "\n")
+      cat("  H0: rho.p ==", x$spec$rho0, " versus  H1: rho.p !=", x$spec$rho0, "\n")
 
     }
 
     if (x$spec$alternative == "greater") {
 
-      cat("  H0: rho.p <=", x$spec$rho, " versus  H1: rho.p >", x$spec$rho, "\n")
+      cat("  H0: rho.p <=", x$spec$rho0, " versus  H1: rho.p >", x$spec$rho0, "\n")
 
     }
 
     if (x$spec$alternative == "less") {
 
-      cat("  H0: rho.p >=", x$spec$rho, " versus  H1: rho.p <", x$spec$rho, "\n")
+      cat("  H0: rho.p >=", x$spec$rho0, " versus  H1: rho.p <", x$spec$rho0, "\n")
 
     }
 
     ###
 
-    if (x$spec$rho == 0) {
+    if (x$spec$rho0 == 0) {
 
       cat(paste0("\n  t = ", formatC(x$res$t, digits = x$spec$digits, format = "f"), ", df = ", x$res$df,
                  ", p-value = ", formatC(x$res$pval, digits = 4, format = "f")))

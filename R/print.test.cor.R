@@ -36,7 +36,7 @@
 #' # H0: rho == 0.4, H1: rho != 0.4
 #' # r = 0.55, n = 120
 #'
-#' obj <- test.cor(r = 0.55, n = 120, rho = 0.4,
+#' obj <- test.cor(r = 0.55, n = 120, rho0 = 0.4,
 #'                 output = FALSE)
 #' print(obj)
 #'
@@ -47,7 +47,7 @@
 #' # Generate random data
 #' dat <- sim.cor(100, rho = 0.4)
 #'
-#' obj <- test.cor(dat$x, dat$y, rho = 0.4, output = FALSE)
+#' obj <- test.cor(dat$x, dat$y, rho0 = 0.4, output = FALSE)
 #' print(obj)
 print.test.cor <- function(x, ...) {
 
@@ -59,25 +59,25 @@ print.test.cor <- function(x, ...) {
 
   if (x$spec$alternative == "two.sided") {
 
-    cat("  H0: rho ==", x$spec$rho, " versus  H1: rho !=", x$spec$rho, "\n")
+    cat("  H0: rho ==", x$spec$rho0, " versus  H1: rho !=", x$spec$rho0, "\n")
 
   }
 
   if (x$spec$alternative == "greater") {
 
-      cat("  H0: rho <=", x$spec$rho, " versus  H1: rho >", x$spec$rho, "\n")
+      cat("  H0: rho <=", x$spec$rho0, " versus  H1: rho >", x$spec$rho0, "\n")
 
   }
 
   if (x$spec$alternative == "less") {
 
-    cat("  H0: rho >=", x$spec$rho, " versus  H1: rho <", x$spec$rho, "\n")
+    cat("  H0: rho >=", x$spec$rho0, " versus  H1: rho <", x$spec$rho0, "\n")
 
   }
 
   ###
 
-  if (x$spec$rho == 0) {
+  if (x$spec$rho0 == 0) {
 
     cat(paste0("\n  t = ", formatC(x$res$t, digits = x$spec$digits, format = "f"), ", df = ", x$res$df,
                ", p-value = ", formatC(x$res$pval, digits = 4, format = "f")))

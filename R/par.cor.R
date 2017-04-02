@@ -18,7 +18,7 @@
 #' @param p.x         a numeric vector or data.frame, varialbe(s) residualized only from x.
 #' @param p.y         a numeric vector or data.frame, varialbe(s) residualized only from y.
 #' @param sig         logical: if \code{TRUE}, statistical significance test is conducted.
-#' @param rho        a number indicating \eqn{\rho}0, the value under the null hypothesis.
+#' @param rho0        a number indicating \eqn{\rho}0, the value under the null hypothesis.
 #' @param alternative a character string describing the alternative hypothesis,
 #'                    must be one of \code{"two.sided"} (default), \code{"greater"} or \code{"less"}.
 #' @param reduced     logical: if \code{TRUE}, compuatation is based on the reduced formula.
@@ -83,10 +83,10 @@
 #' # Partial correlation: One-sided test
 #' # H0: rho.p <= 0.2, H1: rho.p > 0.2
 #'
-#' par.cor(dat$x, dat$y, p.xy = dat$z,
-#'         sig = TRUE, rho = 0.4, alternative = "less")
+#' par.cor(dat$x, dat$y, p.xy = dat$z, sig = TRUE,
+#'         rho0 = 0.4, alternative = "less")
 par.cor <- function(x = NULL, y = NULL, p.xy = NULL, p.x = NULL, p.y = NULL,
-                    sig = FALSE, rho = 0, alternative = c("two.sided", "less", "greater"),
+                    sig = FALSE, rho0 = 0, alternative = c("two.sided", "less", "greater"),
                     reduced = FALSE, conf.level = 0.95, digits = 3, output = TRUE) {
 
   #-----------------------------------------------------------------------------------
@@ -100,9 +100,9 @@ par.cor <- function(x = NULL, y = NULL, p.xy = NULL, p.x = NULL, p.y = NULL,
 
   ###
 
-  if (rho >= 1 | rho <= -1) {
+  if (rho0 >= 1 | rho0 <= -1) {
 
-    stop("Specified value under the null hypothesis rho out of bounds")
+    stop("Specified value under the null hypothesis rho0 out of bounds")
 
   }
 
@@ -195,7 +195,7 @@ par.cor <- function(x = NULL, y = NULL, p.xy = NULL, p.x = NULL, p.y = NULL,
   # Test for statistical significance
   if (sig == TRUE) {
 
-    obj.test.cor <- test.cor(x = x.resid, y = y.resid, rho = rho, alternative = alternative,
+    obj.test.cor <- test.cor(x = x.resid, y = y.resid, rho0 = rho0, alternative = alternative,
                              reduced = reduced, conf.level = conf.level , digits = digits, output = FALSE)
 
   } else {
@@ -209,12 +209,12 @@ par.cor <- function(x = NULL, y = NULL, p.xy = NULL, p.x = NULL, p.y = NULL,
 
   if (sig == TRUE) {
 
-    if (rho == 0) {
+    if (rho0 == 0) {
 
       object <- list(call = match.call(),
                      dat = list(x.resid = x.resid, y.resid = y.resid,
                                 x = x, y = y, p.xy = p.xy, p.x = p.x, p.y = p.y),
-                     spec = list(sig = sig, rho = rho, alternative = obj.test.cor$spec$alternative, reduced = reduced,
+                     spec = list(sig = sig, rho0 = rho0, alternative = obj.test.cor$spec$alternative, reduced = reduced,
                                  conf.level = conf.level, digits = digits),
                      res = list(t = obj.test.cor$res$t, df = obj.test.cor$res$df,
                                 pval = obj.test.cor$res$pval, r.p = obj.test.cor$res$r, n = obj.test.cor$res$n,
@@ -225,7 +225,7 @@ par.cor <- function(x = NULL, y = NULL, p.xy = NULL, p.x = NULL, p.y = NULL,
       object <- list(call = match.call(),
                      dat = list(x.resid = x.resid, y.resid = y.resid,
                                 x = x, y = y, p.xy = p.xy, p.x = p.x, p.y = p.y),
-                     spec = list(sig = sig, rho = rho, alternative = obj.test.cor$spec$alternative, reduced = reduced,
+                     spec = list(sig = sig, rho0 = rho0, alternative = obj.test.cor$spec$alternative, reduced = reduced,
                                  conf.level = conf.level, digits = digits),
                      res = list(z = obj.test.cor$res$z,
                                 pval = obj.test.cor$res$pval, r.p = obj.test.cor$res$r, n = obj.test.cor$res$n,

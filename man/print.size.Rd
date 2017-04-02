@@ -24,9 +24,6 @@ n <- size.cor(delta = 0.2, rho = 0.3, alpha = 0.05, beta = 0.2,
 
 print(n)
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -34,4 +31,6 @@ New York: John Wiley & Sons.
 \seealso{
 \code{\link{size.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

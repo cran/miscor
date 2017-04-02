@@ -2,10 +2,11 @@
 #'
 #' This function simulates bivariate distribution with correaltion equal to \code{rho}, mean equal to \code{mean},
 #' standard deviation equal to \code{sd}, skewness equal to \code{skewness}, and kurtosis equal to \code{kurtosis}
-#' by Fleishman polynomials.
+#' by Fleishman polynomials. Note that that the specified skewness and kurtosis parameters have to be in line with
+#' \eqn{kurtosis} >= (\eqn{skewnewss}^2 - 2)
 #'
 #' @param n          number of observations.
-#' @param rho        correlation.
+#' @param rho        correlation coefficient.
 #' @param mean       mean vector.
 #' @param sd         standard deviation vector.
 #' @param skewness   skewness vector.
@@ -23,8 +24,6 @@
 #'
 #' @return
 #' Returns a data.frame with variables \code{x} and \code{y}.
-#'
-#' @import PoisNonNor
 #'
 #' @export
 #'
@@ -102,8 +101,14 @@ sim.cor <- function(n, rho, mean = c(0, 0), sd = c(1, 1), skewness = c(0, 0), ku
     # skewness and kurtosis
     rmat <- matrix(c(skewness[1], kurtosis[1], skewness[2], kurtosis[2]), byrow = TRUE, ncol = 2)
 
-    tempdat <- PoisNonNor::RNG_P_NN(cmat = cmat, rmat = rmat, norow = n,
-                        mean.vec = mean, variance.vec = sd^2)
+    if (!all(rmat[, 2] >= (rmat[, 1]^2 - 2))) {
+
+      stop("Skewness (skew) and kurtosis (kurt) parameters should be kurt >= (skew^2 - 2) \n")
+
+    }
+
+    tempdat <- internal.RNG_P_NN(cmat = cmat, rmat = rmat, norow = n,
+                                 mean.vec = mean, variance.vec = sd^2)
 
   }
 

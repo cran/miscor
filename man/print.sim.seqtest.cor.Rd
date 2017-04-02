@@ -24,9 +24,9 @@ This function prints the \code{sim.seqtest.cor} object
 
 # Step 1: Determine the optimal size of subsamples (k)
 
-sim.obj <- sim.seqtest.cor(rho.sim = 0.3, k = seq(4, 16, by = 1), rho = 0.3, delta = 0.25,
+sim.obj <- sim.seqtest.cor(rho.sim = 0.3, k = seq(4, 16, by = 1), rho = 0.3,
                            alternative = "greater",
-                           alpha = 0.05, beta = 0.05,
+                           delta = 0.25, alpha = 0.05, beta = 0.05,
                            runs = 10000, output = FALSE)
 
 print(sim.obj)
@@ -34,16 +34,13 @@ print(sim.obj)
 # Step 2: Determine the optimal nominal type-II-risk based on
 #         the optimal size of subsamples (k) from step 1
 
-sim.obj <- sim.seqtest.cor(rho.sim = 0.55, k = 16, rho = 0.3, delta = 0.25,
+sim.obj <- sim.seqtest.cor(rho.sim = 0.55, k = 16, rho = 0.3,
                            alternative = "greater",
-                           alpha = 0.05, beta = seq(0.05, 0.15, by = 0.01),
+                           delta = 0.25, alpha = 0.05, beta = seq(0.05, 0.15, by = 0.01),
                            runs = 10000, output = FALSE)
 
 print(sim.obj)
 }
-}
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
 }
 \references{
 Schneider, B., Rasch, D., Kubinger, K. D., & Yanagida, T. (2015).
@@ -53,4 +50,6 @@ A Sequential triangular test of a correlation coefficient's null-hypothesis: 0 \
 \seealso{
 \code{\link{sim.seqtest.cor}}, \code{\link{plot.sim.seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

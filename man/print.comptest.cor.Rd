@@ -61,9 +61,6 @@ obj <- comptest.cor(r.1 = 0.32, n.1 = 108, r.2 = 0.56, n.2 = 113,
                     alternative = "less", output = FALSE)
 print(obj)
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -73,4 +70,6 @@ Zou, G. Y. (2007). Toward using confidence intervals to compare correlation. \em
 \seealso{
 \code{\link{comptest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

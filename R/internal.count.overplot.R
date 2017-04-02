@@ -1,12 +1,10 @@
 ##########################################################################################################
 #
-# SSRA: Sakai Squential Relation Analysis
+# miscor: Miscellaneous Functions for the Correlation Coefficient
 #
 # Internal function: internal.sizeplot
 #
 # Takuya Yanagida <akuya.yanagida@univie.ac.at>
-# Keiko Sakai <keiko.sakai@oit.ac.jp>
-#
 internal.count.overplot <- function (x, y, tol = NULL, col = par("fg"), pch = "1", ...) {
   if (missing(x))
     stop("Usage: count.overplot(x, y, tol = NULL,...)")

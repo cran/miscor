@@ -19,12 +19,11 @@ export(sim.cor)
 export(sim.seqtest.cor)
 export(size.cor)
 export(test.cor)
-import(PoisNonNor)
 importFrom(utils,packageDescription)
-importFrom("grDevices", "dev.cur", "dev.flush", "dev.hold", 
+importFrom("grDevices", "dev.cur", "dev.flush", "dev.hold",
            "xy.coords", "xyTable")
 importFrom("graphics", "axis", "box", "lines", "mtext", "pairs",
            "panel.smooth", "par", "plot", "points", "polygon",
            "segments", "strheight", "strwidth", "text")
-importFrom("stats", "cor", "na.omit", "pnorm", "pt", "qnorm", "resid",
-           "rnorm", "uniroot")
+importFrom("stats", "cor", "na.omit", "optim", "pnorm", "pt", "qnorm",
+           "qpois", "resid", "rnorm", "rpois", "runif", "uniroot")

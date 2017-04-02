@@ -19,8 +19,8 @@
 #' @param rho.sim        simulated population correlation coefficient, \eqn{\rho}.
 #' @param k              an integer or a numerical vector indicating the number of observations in each sub-sample.
 #' @param rho            a number indicating the correlation under the null hypothesis, \eqn{\rho}0.
-#' @param delta          minimum difference to be detected, \eqn{\delta}.
 #' @param alternative    a character string specifying the alternative hypothesis,
+#' @param delta          minimum difference to be detected, \eqn{\delta}.
 #' @param alpha          type-I-risk, \eqn{\alpha}.
 #' @param beta           an integer or a numerical vector indicating the type-II-risk, \eqn{\beta}.
 #' @param runs           numer of simulation runs.
@@ -68,22 +68,22 @@
 #'
 #' # Step 1: Determine the optimal size of subsamples (k)
 #'
-#' sim.seqtest.cor(rho.sim = 0.3, k = seq(4, 16, by = 1), rho = 0.3, delta = 0.25,
+#' sim.seqtest.cor(rho.sim = 0.3, k = seq(4, 16, by = 1), rho = 0.3,
 #'                 alternative = "greater",
-#'                 alpha = 0.05, beta = 0.05,
+#'                 delta = 0.25, alpha = 0.05, beta = 0.05,
 #'                 runs = 10000, plot = TRUE)
 #'
 #' # Step 2: Determine the optimal nominal type-II-risk based on
 #' #         the optimal size of subsamples (k) from step 1
 #'
-#' sim.seqtest.cor(rho.sim = 0.55, k = 16, rho = 0.3, delta = 0.25,
+#' sim.seqtest.cor(rho.sim = 0.55, k = 16, rho = 0.3,
 #'                 alternative = "greater",
-#'                 alpha = 0.05, beta = seq(0.05, 0.15, by = 0.01),
+#'                 delta = 0.25, alpha = 0.05, beta = seq(0.05, 0.15, by = 0.01),
 #'                 runs = 10000, plot = TRUE)
 #' }
-sim.seqtest.cor <- function(rho.sim, k, rho, delta,
+sim.seqtest.cor <- function(rho.sim, k, rho,
                             alternative = c("two.sided", "less", "greater"),
-                            alpha = 0.05, beta = 0.1,
+                            delta, alpha = 0.05, beta = 0.1,
                             runs = 1000, m.x = 0, sd.x = 1, m.y = 0, sd.y = 1,
                             digits = 3, output = TRUE, plot = FALSE) {
 

@@ -32,9 +32,6 @@ obj <- conf.cor(dat$x, dat$y, conf.level = 0.99, alternative = "less",
                output = FALSE)
 print(obj)
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -45,4 +42,6 @@ Using H0: 0 \eqn{< \rho \le \lambda} is preferable to H0: \eqn{\rho = }0. \emph{
 \seealso{
 \code{\link{conf.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

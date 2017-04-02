@@ -52,11 +52,8 @@ print(obj)
 # H0: rho.p <= 0.2, H1: rho.p > 0.2
 
 obj <- par.cor(dat$x, dat$y, p.xy = dat$z, sig = TRUE,
-               rho = 0.4, alternative = "less", output = FALSE)
+               rho0 = 0.4, alternative = "less", output = FALSE)
 print(obj)
-}
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
 }
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
@@ -65,4 +62,6 @@ New York: John Wiley & Sons.
 \seealso{
 \code{\link{par.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

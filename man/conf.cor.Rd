@@ -5,8 +5,8 @@
 \title{Product-moment correlation coefficient with confidence interval}
 \usage{
 conf.cor(x = NULL, y = NULL, r = NULL, n = NULL,
-  alternative = c("two.sided", "less", "greater"), conf.level = 0.95,
-  digits = 3, output = TRUE)
+         alternative = c("two.sided", "less", "greater"),
+         conf.level = 0.95, digits = 3, output = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector.}
@@ -35,7 +35,7 @@ Returns an object of class \code{conf.cor} with following entries:
   \code{dat}       \tab data.frame with x and y (if available) \cr
   \code{spec}      \tab specification of function arguments \cr
   \code{res}       \tab list with results, i.e., r (correlation coefficient),
-                        n (sample size), lower (lower limit of CI), upper (upper limit of CI) \cr
+                        n, lower (lower limit of CI), upper (upper limit of CI) \cr
 }
 }
 \description{
@@ -57,9 +57,6 @@ dat <- sim.cor(100, rho = 0.4)
 
 conf.cor(dat$x, dat$y, conf.level = 0.99, alternative = "less")
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -70,4 +67,6 @@ Using H0: 0 \eqn{< \rho \le \lambda} is preferable to H0: \eqn{\rho = }0. \emph{
 \seealso{
 \code{\link{test.cor}}, \code{\link{seqtest.cor}}, \code{\link{comptest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

@@ -4,10 +4,11 @@
 \alias{comptest.cor}
 \title{Comparision of product-moment correlation coefficients}
 \usage{
-comptest.cor(x = NULL, y = NULL, z = NULL, group = NULL, r.xy = NULL,
-  r.xz = NULL, r.yz = NULL, n = NULL, r.1 = NULL, r.2 = NULL,
-  n.1 = NULL, n.2 = NULL, alternative = c("two.sided", "less", "greater"),
-  conf.level = 0.95, digits = 3, output = TRUE)
+comptest.cor(x = NULL, y = NULL, z = NULL, group = NULL,
+             r.xy = NULL, r.xz = NULL, r.yz = NULL, n = NULL,
+             r.1 = NULL, r.2 = NULL, n.1 = NULL, n.2 = NULL,
+             alternative = c("two.sided", "less", "greater"),
+             conf.level = 0.95, digits = 3, output = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector.}
@@ -110,9 +111,6 @@ comptest.cor(x = dat$x, y = dat$y, group = dat$group)
 comptest.cor(r.1 = 0.32, n.1 = 108, r.2 = 0.56, n.2 = 113,
              alternative = "less")
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -122,4 +120,6 @@ Zou, G. Y. (2007). Toward using confidence intervals to compare correlation. \em
 \seealso{
 \code{\link{test.cor}}, \code{\link{seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

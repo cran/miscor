@@ -28,7 +28,7 @@ print(obj)
 # H0: rho == 0.4, H1: rho != 0.4
 # r = 0.55, n = 120
 
-obj <- test.cor(r = 0.55, n = 120, rho = 0.4,
+obj <- test.cor(r = 0.55, n = 120, rho0 = 0.4,
                 output = FALSE)
 print(obj)
 
@@ -39,11 +39,8 @@ print(obj)
 # Generate random data
 dat <- sim.cor(100, rho = 0.4)
 
-obj <- test.cor(dat$x, dat$y, rho = 0.4, output = FALSE)
+obj <- test.cor(dat$x, dat$y, rho0 = 0.4, output = FALSE)
 print(obj)
-}
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
 }
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
@@ -55,4 +52,6 @@ Using H0: 0 \eqn{< \rho \le \lambda} is preferable to H0: \eqn{\rho = }0. \emph{
 \seealso{
 \code{\link{test.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}

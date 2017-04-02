@@ -5,7 +5,7 @@
 \title{Sample size determination for testing the product-moment correlation coefficient}
 \usage{
 size.cor(rho = NULL, delta, alternative = c("two.sided", "less", "greater"),
-  alpha = 0.05, beta = 0.1, output = TRUE)
+         alpha = 0.05, beta = 0.1, output = TRUE)
 }
 \arguments{
 \item{rho}{a number indicating the correlation coefficient under the null hypothesis, \eqn{\rho}0.}
@@ -49,9 +49,6 @@ size.cor(rho = 0.3, delta = 0.2, alpha = 0.05, beta = 0.2)
 size.cor(rho = 0.3, delta = 0.2, alternative = "greater",
          alpha = 0.05, beta = 0.2)
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
-}
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
 New York: John Wiley & Sons.
@@ -62,4 +59,6 @@ Rasch, D., Pilz, J., Verdooren, L. R., & Gebhardt, G. (2011).
 \seealso{
 \code{\link{test.cor}}, \code{\link{seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

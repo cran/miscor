@@ -5,8 +5,8 @@
 \title{Partial and semipartial correlation}
 \usage{
 par.cor(x = NULL, y = NULL, p.xy = NULL, p.x = NULL, p.y = NULL,
-  sig = FALSE, rho = 0, alternative = c("two.sided", "less", "greater"),
-  reduced = FALSE, conf.level = 0.95, digits = 3, output = TRUE)
+        sig = FALSE, rho0 = 0, alternative = c("two.sided", "less", "greater"),
+        reduced = FALSE, conf.level = 0.95, digits = 3, output = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector.}
@@ -21,7 +21,7 @@ par.cor(x = NULL, y = NULL, p.xy = NULL, p.x = NULL, p.y = NULL,
 
 \item{sig}{logical: if \code{TRUE}, statistical significance test is conducted.}
 
-\item{rho}{a number indicating \eqn{\rho}0, the value under the null hypothesis.}
+\item{rho0}{a number indicating \eqn{\rho}0, the value under the null hypothesis.}
 
 \item{alternative}{a character string describing the alternative hypothesis,
 must be one of \code{"two.sided"} (default), \code{"greater"} or \code{"less"}.}
@@ -93,11 +93,8 @@ par.cor(dat$x, dat$y, p.xy = dat$z, sig = TRUE)
 # Partial correlation: One-sided test
 # H0: rho.p <= 0.2, H1: rho.p > 0.2
 
-par.cor(dat$x, dat$y, p.xy = dat$z,
-        sig = TRUE, rho = 0.4, alternative = "less")
-}
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+par.cor(dat$x, dat$y, p.xy = dat$z, sig = TRUE,
+        rho0 = 0.4, alternative = "less")
 }
 \references{
 Rasch, D., Kubinger, K. D., & Yanagida, T. (2011). \emph{Statistics in psychology - Using R and SPSS}.
@@ -106,4 +103,6 @@ New York: John Wiley & Sons.
 \seealso{
 \code{\link{test.cor}}, \code{\link{conf.cor}}, \code{\link{comptest.cor}}, \code{\link{seqtest.cor}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at},
+}

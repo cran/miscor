@@ -23,9 +23,6 @@ seq.obj <- seqtest.cor(0.46, k = 14, rho = 0.3, delta = 0.2,
 
 print(seq.obj)
 }
-\author{
-Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
-}
 \references{
 Rasch, D., Pilz, J., Verdooren, L. R., & Gebhardt, G. (2011).
 \emph{Optimal experimental design with R}. Boca Raton: Chapman & Hall/CRC.
@@ -40,4 +37,6 @@ A Sequential triangular test of a correlation coefficient's null-hypothesis: 0 \
 \seealso{
 \code{\link{seqtest.cor}}, \code{\link{plot.seqtest}}
 }
-
+\author{
+Takuya Yanagida \email{takuya.yanagida@univie.ac.at}
+}
